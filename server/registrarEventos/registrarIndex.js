@@ -4,7 +4,7 @@ import {
   obterDocumentos,
 } from "../db/documentosDb.js";
 
-function registrarEventosInicio(socket, io) {
+function registrarIndex(socket, io) {
   socket.on("obter_documentos", async (devolverDocumentos) => {
     const documentos = await obterDocumentos();
 
@@ -26,4 +26,4 @@ function registrarEventosInicio(socket, io) {
   });
 }
 
-export default registrarEventosInicio;
+export default registrarIndex;
