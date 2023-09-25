@@ -21,6 +21,7 @@
   "homepage": "https://github.com/matheusrodacki/alura-docs-2s#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "jsonwebtoken": "9.0.2",
     "mongodb": "4.11",
     "socket.io": "^4.5.3"
   },
