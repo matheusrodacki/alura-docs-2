@@ -135,5 +135,5 @@ replit*
 replit.nix
 .breakpoints
 
-#sequelize
-/api/config/config.json
+#bun
+bun.lockb
