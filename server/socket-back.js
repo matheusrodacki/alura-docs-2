@@ -1,3 +1,4 @@
+import "dotenv/config";
 import io from "./server.js";
 import registrarIndex from "./controllers/indexController.js";
 import registrarDocumento from "./controllers/documentoController.js";

@@ -7,16 +7,11 @@ function registrarLogin(socket, io) {
     const usuarioEncontrado = await encontrarUsuario(usuario);
 
     if (usuarioEncontrado) {
-      const usuarioAutenticado = await autenticarUsuario(
-        senha,
-        usuarioEncontrado
-      );
+      const usuarioAutenticado = autenticarUsuario(senha, usuarioEncontrado);
 
       if (usuarioAutenticado) {
         const tokenJWT = gerarJWT({ nomeUsuario: usuario });
-        console.log(tokenJWT);
-
-        socket.emit("autenticacao_sucesso");
+        socket.emit("autenticacao_sucesso", tokenJWT);
       } else {
         socket.emit("autenticacao_erro");
       }
