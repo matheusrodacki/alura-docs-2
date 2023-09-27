@@ -6,11 +6,16 @@ import registrarLogin from "./controllers/loginController.js";
 import io from "./server.js";
 import autorizarUsuario from "./middlewares/autorizarUsuario.js";
 
-io.use(autorizarUsuario);
+const nspAreaLogada = io.of("/areaLogada");
 
-io.on("connection", (socket) => {
-  registrarIndex(socket, io);
-  registrarDocumento(socket, io);
+nspAreaLogada.use(autorizarUsuario);
+
+nspAreaLogada.on("connection", (socket) => {
+  registrarIndex(socket, nspAreaLogada);
+  registrarDocumento(socket, nspAreaLogada);
+});
+
+io.of("/").on("connection", (socket) => {
   registrarCadastro(socket, io);
   registrarLogin(socket, io);
 });
