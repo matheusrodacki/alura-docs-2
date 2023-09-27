@@ -1,6 +1,11 @@
 import { inserirLinkDocumento, removerLinkDocumento } from "./index.js";
+import { obterCookie } from "./utils/cookies.js";
 
-const socket = io();
+const socket = io({
+  auth: {
+    token: obterCookie("tokenJWT"),
+  },
+});
 
 socket.on("connect_error", (erro) => {
   alert(erro);
