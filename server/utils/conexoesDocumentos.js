@@ -9,4 +9,17 @@ function obterUsuariosDocumento(nomeDocumento) {
     .map((conexoesSalvas) => conexoesSalvas.nomeUsuario);
 }
 
-export { adicionarConexao, obterUsuariosDocumento };
+function removerConexao(nomeDocumento, nomeUsuario) {
+  const indice = conexoesDocumentos.findIndex((conexoesSalvas) => {
+    return (
+      conexoesSalvas.nomeDocumento === nomeDocumento &&
+      conexoesSalvas.nomeUsuario === nomeUsuario
+    );
+  });
+
+  if (indice !== -1) {
+    conexoesDocumentos.splice(indice, 1);
+  }
+}
+
+export { adicionarConexao, obterUsuariosDocumento, removerConexao };

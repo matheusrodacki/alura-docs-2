@@ -6,6 +6,7 @@ import {
 import {
   adicionarConexao,
   obterUsuariosDocumento,
+  removerConexao,
 } from "../utils/conexoesDocumentos.js";
 
 function registrarDocumento(socket, io) {
@@ -43,7 +44,10 @@ function registrarDocumento(socket, io) {
       });
 
       socket.on("disconnect", () => {
-        console.log(`Usuario ${socket.id} foi desconectado!`);
+        removerConexao(nomeDocumento, nomeUsuario);
+        const usuariosNoDocumento = obterUsuariosDocumento(nomeDocumento);
+
+        io.to(nomeDocumento).emit("usuarios_no_documento", usuariosNoDocumento);
       });
     }
   );
